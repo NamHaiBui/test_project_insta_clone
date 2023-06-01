@@ -4,17 +4,17 @@ import 'dart:developer' as devtools show log;
 import 'package:flutter/material.dart';
 import 'package:test_project_insta_clone/views/components/constants/strings.dart';
 
-import 'loading_screen_controller.dart';
+import 'loading_widget_controller.dart';
 
 extension Log on Object {
   void log() => devtools.log(toString());
 }
 
-class LoadingScreen {
-  LoadingScreen._sharedInstance();
-  static final LoadingScreen _shared = LoadingScreen._sharedInstance();
-  factory LoadingScreen.instance() => _shared;
-  LoadingScreenController? _controller;
+class LoadingWidget {
+  LoadingWidget._sharedInstance();
+  static final LoadingWidget _shared = LoadingWidget._sharedInstance();
+  factory LoadingWidget.instance() => _shared;
+  LoadingWidgetController? _controller;
 
   void show({
     required BuildContext context,
@@ -32,7 +32,7 @@ class LoadingScreen {
     _controller = null;
   }
 
-  LoadingScreenController? showOverlay(
+  LoadingWidgetController? showOverlay(
       {required BuildContext context, required String text}) {
     final textController = StreamController<String>();
     final state = Overlay.of(context);
@@ -93,7 +93,7 @@ class LoadingScreen {
       },
     );
     state.insert(overlay);
-    return LoadingScreenController(close: () {
+    return LoadingWidgetController(close: () {
       textController.close();
       overlay.remove();
 

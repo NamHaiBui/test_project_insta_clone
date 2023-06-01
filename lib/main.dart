@@ -3,7 +3,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:test_project_insta_clone/pages/auth_page.dart';
 import 'package:test_project_insta_clone/pages/main_page.dart';
+import 'package:test_project_insta_clone/state/providers/auth_state_provider.dart';
+import 'package:test_project_insta_clone/state/providers/is_loading_provider.dart';
 import 'package:test_project_insta_clone/state/providers/is_logged_in_provider.dart';
+import 'package:test_project_insta_clone/views/components/loading/loading_widget.dart';
 
 import 'firebase_options.dart';
 
@@ -34,6 +37,17 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: true,
       home: Consumer(
         builder: (context, ref, child) {
+          //
+          ref.listen<bool>(
+            isLoadingProvider,
+            (previous, next) {
+              if (next) {
+                LoadingWidget.instance().show(context: context);
+              } else {
+                LoadingWidget.instance().hide();
+              }
+            },
+          );
           final isLoggedIn = ref.watch(isLoggedInProvider);
           if (isLoggedIn) {
             return const MainView();
@@ -41,19 +55,6 @@ class MyApp extends StatelessWidget {
             return const AuthPage();
           }
         },
-      ),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Page'),
       ),
     );
   }
