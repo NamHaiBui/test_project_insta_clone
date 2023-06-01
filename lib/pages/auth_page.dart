@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:test_project_insta_clone/state/auth/backend/authenticator.dart';
 import 'dart:developer' as devtools show log;
 
 import 'package:test_project_insta_clone/state/providers/auth_state_provider.dart';
