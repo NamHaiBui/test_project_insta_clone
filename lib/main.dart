@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:test_project_insta_clone/pages/auth_page.dart';
+
+import 'package:test_project_insta_clone/pages/login_page.dart';
 import 'package:test_project_insta_clone/pages/main_page.dart';
-import 'package:test_project_insta_clone/state/providers/auth_state_provider.dart';
 import 'package:test_project_insta_clone/state/providers/is_loading_provider.dart';
 import 'package:test_project_insta_clone/state/providers/is_logged_in_provider.dart';
 import 'package:test_project_insta_clone/views/components/loading/loading_widget.dart';
@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
           if (isLoggedIn) {
             return const MainView();
           } else {
-            return const AuthPage();
+            return const LoginPage();
           }
         },
       ),
