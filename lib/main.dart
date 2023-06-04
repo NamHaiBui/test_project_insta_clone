@@ -37,11 +37,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: true,
       home: Consumer(
         builder: (context, ref, child) {
-          //
           ref.listen<bool>(
             isLoadingProvider,
-            (previous, next) {
-              if (next) {
+            (_, isLoading) {
+              if (isLoading) {
                 LoadingWidget.instance().show(context: context);
               } else {
                 LoadingWidget.instance().hide();
@@ -50,7 +49,7 @@ class MyApp extends StatelessWidget {
           );
           final isLoggedIn = ref.watch(isLoggedInProvider);
           if (isLoggedIn) {
-            return const MainView();
+            return const MainPage();
           } else {
             return const LoginPage();
           }

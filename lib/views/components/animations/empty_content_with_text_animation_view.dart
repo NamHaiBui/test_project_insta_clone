@@ -11,7 +11,7 @@ class EmptyContentWithTextAnimationView extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(32.0),
+            padding: const EdgeInsets.all(16.0),
             child: Text(
               text,
               style: Theme.of(context)
