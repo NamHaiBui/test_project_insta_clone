@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:test_project_insta_clone/pages/constants/strings_for_content.dart';
-import 'package:test_project_insta_clone/state/posts/post_grid_widget.dart';
+import 'package:test_project_insta_clone/views/components/posts/post_grid_widget.dart';
 import 'package:test_project_insta_clone/state/posts/providers/user_posts_provider.dart';
 import 'package:test_project_insta_clone/views/components/animations/empty_content_with_text_animation_view.dart';
 import 'package:test_project_insta_clone/views/components/animations/error_animation_view.dart';
