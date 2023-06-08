@@ -123,7 +123,7 @@ class PostCommentsWidget extends HookConsumerWidget {
     if (userId == null) {
       return;
     }
-    final isSent = await ref.read(sendcommentProvider.notifier).sendComment(
+    final isSent = await ref.read(sendCommentProvider.notifier).sendComment(
           fromUserId: userId,
           onPostId: postId,
           comment: controller.text,

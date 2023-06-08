@@ -8,6 +8,7 @@ import 'package:test_project_insta_clone/state/constants/firebase_field_name.dar
 import '../../posts/typedefs/user_id.dart';
 import '../models/user_info_model.dart';
 
+// Provide information on the user
 final userInfoModelProvider =
     StreamProvider.family.autoDispose<UserInfoModel, UserId>(
   (ref, userId) {

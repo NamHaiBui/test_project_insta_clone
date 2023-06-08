@@ -9,6 +9,8 @@ import 'package:test_project_insta_clone/state/post_settings/providers/post_sett
 import 'package:test_project_insta_clone/state/providers/auth_state_provider.dart';
 import 'package:test_project_insta_clone/views/components/dialogs/alert_dialog_model.dart';
 import 'package:test_project_insta_clone/views/components/dialogs/logout_dialog.dart';
+import 'package:test_project_insta_clone/views/tabs/home/home_widget.dart';
+import 'package:test_project_insta_clone/views/tabs/search/search_widget.dart';
 import 'package:test_project_insta_clone/views/tabs/users_posts/user_posts_widget.dart';
 
 class MainPage extends ConsumerStatefulWidget {
@@ -62,7 +64,7 @@ class _MainPageState extends ConsumerState<MainPage> {
                   onPressed: () async {
                     //pick an Image
                     final imageFile =
-                        await ImagePickerHelper.pickVideoFromGallery();
+                        await ImagePickerHelper.pickImageFromGallery();
                     if (imageFile == null) {
                       return;
                     }
@@ -119,8 +121,8 @@ class _MainPageState extends ConsumerState<MainPage> {
               )),
           body: const TabBarView(children: [
             UserPostWidget(),
-            UserPostWidget(),
-            UserPostWidget(),
+            SearchWidget(),
+            HomeWidget(),
           ])),
     );
   }

@@ -14,26 +14,36 @@ class UserPostWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     //async value is like a proxy object that
     //allows you to build various widgets dependent on the state of your provider
-    final posts = ref.watch(userPostProvider);
-    //to refresh the page
+    final posts = ref.watch(userPostsProvider);
     return RefreshIndicator(
-        child: posts.when(
-            data: (posts) {
-              if (posts.isEmpty) {
-                return const EmptyContentWithTextAnimationView(
-                    text: StringsForContent.youHaveNoPosts);
-              } else {
-                return PostsGridWidget(posts: posts);
-              }
-            },
-            error: (Object error, StackTrace stackTrace) {
-              return const ErrorAnimationView();
-            },
-            loading: () => const LoadingAnimationView()),
-        onRefresh: () {
-          // ignore: unused_result
-          ref.refresh(userPostProvider);
-          return Future.delayed(const Duration(seconds: 1));
-        });
+      onRefresh: () {
+        // ignore: unused_result
+        ref.refresh(userPostsProvider);
+        return Future.delayed(
+          const Duration(
+            seconds: 1,
+          ),
+        );
+      },
+      child: posts.when(
+        data: (posts) {
+          if (posts.isEmpty) {
+            return const EmptyContentWithTextAnimationView(
+              text: StringsForContent.youHaveNoPosts,
+            );
+          } else {
+            return PostsGridWidget(
+              posts: posts,
+            );
+          }
+        },
+        error: (error, stackTrace) {
+          return const ErrorAnimationView();
+        },
+        loading: () {
+          return const LoadingAnimationView();
+        },
+      ),
+    );
   }
 }

@@ -40,7 +40,6 @@ class LoadingWidget {
     textController.add(text);
     final renderBox = context.findRenderObject() as RenderBox;
     final size = renderBox.size;
-    size.log();
     final overlay = OverlayEntry(
       builder: (context) {
         return Material(

@@ -94,7 +94,6 @@ class _CreateNewPostPageState extends ConsumerState<CreateNewPostPage> {
                 labelText: StringsForContent.pleaseWriteYourMessageHere,
               ),
               autofocus: true,
-              maxLines: 10,
               controller: postController,
             ),
           ),
