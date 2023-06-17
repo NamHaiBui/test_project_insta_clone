@@ -16,9 +16,9 @@ class CompactCommentColumn extends ConsumerWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ...comments.map((comment) => CompactCommentTile(comment: comment))
-        ],
+        children: comments
+            .map((comment) => CompactCommentTile(comment: comment))
+            .toList(),
       ),
     );
   }

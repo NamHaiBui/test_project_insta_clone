@@ -108,21 +108,21 @@ class _PostDetailsPageState extends ConsumerState<PostDetailsPage> {
                           ));
                         },
                         icon: const Icon(Icons.mode_comment_outlined)),
-                  PostDisplayNameAndMessageView(post: data.post),
-                  PostDateView(datetime: data.post.createdAt),
-                  const Divider(color: Colors.white70),
-                  CompactCommentColumn(comments: data.comments),
-                  if (data.post.allowLikes)
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          LikesCountView(postId: postId),
-                        ],
-                      ),
-                    )
                 ],
               ),
+              PostDisplayNameAndMessageView(post: data.post),
+              PostDateView(datetime: data.post.createdAt),
+              const Divider(color: Colors.white70),
+              if (data.post.allowLikes)
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      LikesCountView(postId: postId),
+                    ],
+                  ),
+                ),
+              CompactCommentColumn(comments: data.comments),
               const SizedBox(height: 100),
             ],
           ));

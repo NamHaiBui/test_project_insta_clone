@@ -4,9 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:test_project_insta_clone/state/constants/firebase_collection_name.dart';
 import 'package:test_project_insta_clone/state/constants/firebase_field_name.dart';
-
-import '../../posts/typedefs/user_id.dart';
-import '../models/user_info_model.dart';
+import 'package:test_project_insta_clone/state/posts/typedefs/user_id.dart';
+import 'package:test_project_insta_clone/state/user_info/models/user_info_model.dart';
 
 // Provide information on the user
 final userInfoModelProvider =

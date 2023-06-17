@@ -11,7 +11,8 @@ class CompactCommentTile extends ConsumerWidget {
   const CompactCommentTile({super.key, required this.comment});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userInfo = ref.read(userInfoModelProvider(comment.fromUserId));
+    //
+    final userInfo = ref.watch(userInfoModelProvider(comment.fromUserId));
     return userInfo.when(
       data: (data) {
         return RichTwoPartText(
@@ -21,7 +22,8 @@ class CompactCommentTile extends ConsumerWidget {
         return const SmallErrorAnimationView();
       },
       loading: () {
-        return const Center(child: CircularProgressIndicator());
+        return RichTwoPartText(
+            leftPart: "Unloaded", rightPart: comment.comment);
       },
     );
   }

@@ -58,11 +58,11 @@ final specificPostWithCommentsProvider = StreamProvider.family
         .collection(
           FirebaseCollectionName.comments,
         )
-        .where(FirebaseFieldName.postId, isEqualTo: request.postId)
-        .orderBy(FirebaseFieldName.createdAt, descending: true);
+        .where(FirebaseFieldName.postId, isEqualTo: request.postId);
+    // .orderBy(FirebaseFieldName.createdAt, descending: true);
 
     final limitedCommentQuery = request.limit != null
-        ? commentsQuery.limit(request.limit!)
+        ? commentsQuery.limit(request.limit ?? 5)
         : commentsQuery;
     final commentsSub = limitedCommentQuery.snapshots().listen((event) {
       comments = event.docs

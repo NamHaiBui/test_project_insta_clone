@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart' show immutable;
 class PostKey {
   static const userId = 'uid';
   static const message = 'message';
-  static const createdAt = 'createdAt';
+  static const createdAt = 'created_at';
   static const thumbnailUrl = 'thumbnail_url';
   static const fileUrl = 'file_url';
   static const fileType = 'file_type';
