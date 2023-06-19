@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -5,7 +7,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:test_project_insta_clone/pages/login_page.dart';
 import 'package:test_project_insta_clone/pages/main_page.dart';
 import 'package:test_project_insta_clone/state/providers/is_loading_provider.dart';
-import 'package:test_project_insta_clone/state/providers/is_logged_in_provider.dart';
 import 'package:test_project_insta_clone/views/components/loading/loading_widget.dart';
 
 import 'firebase_options.dart';
@@ -15,6 +16,9 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  FirebaseUIAuth.configureProviders([
+    EmailAuthProvider(),
+  ]);
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -47,12 +51,15 @@ class MyApp extends StatelessWidget {
               }
             },
           );
-          final isLoggedIn = ref.watch(isLoggedInProvider);
-          if (isLoggedIn) {
-            return const MainPage();
-          } else {
-            return const LoginPage();
-          }
+          return MaterialApp(
+            initialRoute: FirebaseAuth.instance.currentUser == null
+                ? '/login'
+                : '/main-page',
+            routes: {
+              '/login': (context) => const LoginPage(),
+              '/main-page': (context) => MainPage(key: key),
+            },
+          );
         },
       ),
     );
